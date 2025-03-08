@@ -40,7 +40,7 @@ def create_vector_database():
     else:
         raise ValueError(f"Invalid export type: {EXPORT_TYPE}")
 
-    with open("/home/medasanilikhitha/PycharmProjects/RAG-using-deepseek/data/DeepSeek_R1.pdf", "w") as f:
+    with open("/home/medasanilikhitha/PycharmProjects/RAG-using-deepseek/data/DeepSeek_docs.pdf", "w") as f:
         for doc in dockling_documents:
             f.write(doc.page_content + '\n')
 
