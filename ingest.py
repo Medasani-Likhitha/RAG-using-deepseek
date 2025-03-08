@@ -7,12 +7,15 @@ from docling.chunking import HybridChunker
 from langchain.text_splitter import MarkdownHeaderTextSplitter
 from langchain_docling.loader import ExportType
 from dotenv import load_dotenv
+
 load_dotenv()
 
 qdrant_url = os.getenv("QDRANT_URL_LOCALHOST")
+qdrant_cloud_url = os.getenv("QDRANT_CLOUD_URL")
+api_key = os.getenv("QDRANT_API")
 EMBED_MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
 EXPORT_TYPE = ExportType.DOC_CHUNKS
-FILE_PATH = "data/2021-09-01-2021-09-30.json"
+FILE_PATH = "/home/medasanilikhitha/PycharmProjects/RAG-using-deepseek/data/DeepSeek_R1.pdf"
 
 def create_vector_database():
     loader = DoclingLoader(
@@ -37,7 +40,7 @@ def create_vector_database():
     else:
         raise ValueError(f"Invalid export type: {EXPORT_TYPE}")
 
-    with open("data/2021-09-01-2021-09-30.json", "r") as f:
+    with open("/home/medasanilikhitha/PycharmProjects/RAG-using-deepseek/data/DeepSeek_R1.pdf", "w") as f:
         for doc in dockling_documents:
             f.write(doc.page_content + '\n')
 
@@ -51,6 +54,15 @@ def create_vector_database():
         url=qdrant_url,
         collection_name="rag",
     )
+
+    ##QDRANT CLOUD
+    # vectorstore = QdrantVectorStore.from_documents(
+    #     documents=splits,
+    #     embedding=embeddings,
+    #     url=qdrant_cloud_url,
+    #     api_key=api_key,
+    #     collection_name="rag_cloud",
+    # )
 
     print("Vector database created successfully")
 

@@ -1,4 +1,6 @@
 import os
+import warnings
+warnings.filterwarnings("ignore")
 
 from langchain.prompts import ChatPromptTemplate
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
