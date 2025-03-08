@@ -1,0 +1,17 @@
+chainlit
+langchain-huggingface
+langchain
+openai
+langchain-community
+docling
+qdrant-client
+langchain-ollama
+sentence-transformers
+fastembed
+langchain-qdrant
+llama-parse
+llama-index
+grpcio
+grpcio-status
+langchain-groq
+langchain-docling

@@ -1,7 +1,7 @@
 import os
 
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
-from langchain_qdrant.vectorstore import QdrantVectorStore
+from langchain_qdrant import QdrantVectorStore
 from langchain_docling.loader import DoclingLoader
 from docling.chunking import HybridChunker
 from langchain.text_splitter import MarkdownHeaderTextSplitter
@@ -15,7 +15,7 @@ EXPORT_TYPE = ExportType.DOC_CHUNKS
 FILE_PATH = "data/2021-09-01-2021-09-30.json"
 
 def create_vector_database():
-    loader = DoclingLoasder(
+    loader = DoclingLoader(
         file_path=FILE_PATH,
         export_type=EXPORT_TYPE,
         chunker=HybridChunker(tokenizer=EMBED_MODEL_ID)
