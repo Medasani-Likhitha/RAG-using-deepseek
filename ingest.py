@@ -60,7 +60,7 @@ def create_vector_database():
         embedding=embeddings,
         url=qdrant_cloud_url,
         api_key=api_key,
-        collection_name="rag_cloud",
+        collection_name="qdrant_rag",
     )
 
     print("Vector database created successfully")

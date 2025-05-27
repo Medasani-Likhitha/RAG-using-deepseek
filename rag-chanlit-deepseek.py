@@ -52,6 +52,7 @@ def retry_on_failure(func, retries=3, delay=2):
         raise Exception(f"Failed to connect after {retries} attempts")
     return wrapper
 
+
 @cl.on_chat_start
 async def on_chat_start():
     template = """Answer the question based only on the following context:
@@ -71,7 +72,7 @@ async def on_chat_start():
     @retry_on_failure
     def initialize_vectorstore():
         return QdrantVectorStore.from_existing_collection(
-            embedding=embedding, collection_name="rag_cloud", url=qdrant_cloud_url, api_key=api_key
+            embedding=embedding, collection_name="qdrant_rag", url=qdrant_cloud_url, api_key=api_key
         )
 
     vectorstore = initialize_vectorstore()
